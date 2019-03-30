@@ -180,6 +180,7 @@ corresponding Unix manual entries for more information on calls.");
 #define fsync _commit
 #else
 /* Unix functions that the configure script doesn't check for */
+#if !defined(__SWITCH__)
 #define HAVE_EXECV      1
 #define HAVE_FORK       1
 #if defined(__USLC__) && defined(__SCO_VERSION__)       /* SCO UDK Compiler */
@@ -196,6 +197,7 @@ corresponding Unix manual entries for more information on calls.");
 #define HAVE_SYSTEM     1
 #define HAVE_WAIT       1
 #define HAVE_TTYNAME    1
+#endif  /* ! __SWITCH__ */
 #endif  /* _MSC_VER */
 #endif  /* ! __WATCOMC__ || __QNX__ */
 
