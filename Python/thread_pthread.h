@@ -299,7 +299,11 @@ PyThread_get_thread_ident(void)
     if (!initialized)
         PyThread_init_thread();
     threadid = pthread_self();
+#ifdef __SWITCH__
+    return (unsigned long) threadid - 1;
+#else
     return (unsigned long) threadid;
+#endif
 }
 
 void
